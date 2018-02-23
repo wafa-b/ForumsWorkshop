@@ -14,6 +14,6 @@ while request > 0:
     elif request >= 5:
         request -= 5
         print ("give 5")
-    elif request >= 2:
-        request -= 2
-        print ("give 2")
+      elif request < 5 :
+        print ("give " + str(request))
+        request = 0
