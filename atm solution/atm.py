@@ -25,7 +25,8 @@ def withdraw(balance,request):
                 print ("give " + str(request))
                 request = 0
         print(" ")
-        return balance
+
+    return balance
 balance = 500
 balance=withdraw(balance,277)
 balance=withdraw(balance,30)
