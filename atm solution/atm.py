@@ -8,32 +8,46 @@ class ATM:
         print ("Welcome to " + self.bank_name)
         print("Current balance = " + str(self.balance))
         print("==================================")
+
         if request > self.balance:
             print("Can`t give you all this money !!")
             print("==================================")
+
         elif request <= 0:
             print("More than zero plz!")
             print("==================================")
+
         else:
-            self.balance = self.balance - request
+            self.balance -= request
+            ATM.process_request(self,request)
+
+
+    def process_request(self,request):
             while request > 0:
+
                 if request >= 100:
                     request -= 100
                     print("give 100")
+
                 elif request >= 50:
                     request -= 50
                     print ("give 50")
+
                 elif request >= 10:
                     request -= 10
                     print ("give 10")
+
                 elif request >= 5:
                     request -= 5
                     print ("give 5")
+
                 else:
                     print ("give " + str(request))
                     request = 0
             print("==================================")
-        return self.balance
+
+            return self.balance
+
 
 
 balance1 = 500
