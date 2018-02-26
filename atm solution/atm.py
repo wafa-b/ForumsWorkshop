@@ -19,10 +19,10 @@ class ATM:
 
         else:
             self.balance -= request
-            ATM.process_request(self,request)
+            self.process_request(request)
 
-
-    def process_request(self,request):
+    @staticmethod
+    def process_request(request):
             while request > 0:
 
                 if request >= 100:
@@ -46,7 +46,7 @@ class ATM:
                     request = 0
             print("==================================")
 
-            return self.balance
+            return request
 
 
 
