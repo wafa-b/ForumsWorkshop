@@ -2,6 +2,7 @@ class ATM:
     def __init__(self,balance,bank_name):
         self.balance = balance
         self.bank_name = bank_name
+        self.withdrawals_list = []
 
 
     def withdraw(self,request):
@@ -18,6 +19,7 @@ class ATM:
             print("==================================")
 
         else:
+            self.withdrawals_list.append(request)
             self.balance -= request
             self.process_request(request)
 
@@ -48,6 +50,10 @@ class ATM:
 
             return request
 
+    def show_withdrawals(self):
+        for withdrawal in self.withdrawals_list:
+            print("Mony Withdrawl is " + str(withdrawal))
+        print("==================================")
 
 
 balance1 = 500
@@ -59,5 +65,9 @@ atm2 = ATM(balance2, "Baraka Bank")
 atm1.withdraw(277)
 atm1.withdraw(800)
 
+atm1.show_withdrawals()
+
 atm2.withdraw(100)
 atm2.withdraw(2000)
+
+atm2.show_withdrawals()
