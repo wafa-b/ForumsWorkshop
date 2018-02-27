@@ -9,5 +9,9 @@ post1 = models.Post("First Post","This is first post")
 post2 = models.Post("Second Post","This is second post")
 post3 = models.Post("Third Post","This is third post")
 
+print member1
+print member2
 
-
+print post1
+print post2
+print post3
