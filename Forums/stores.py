@@ -1,20 +1,20 @@
 class MemberStore:
 
     members = []
-    last_id = 0
+    last_id = 1
 
     def get_all(self):
         return MemberStore.members
 
     def add(self,member):
-        member_id = MemberStore.last_id
+        member.id = MemberStore.last_id
         MemberStore.members.append(member)
         MemberStore.last_id += 1
 
     def get_by_id(self,id):
         all_members = self.get_all()
         for member in all_members:
-            if member == id:
+            if member.id == id:
                 return  member
 
     def update(self,member):
@@ -23,33 +23,32 @@ class MemberStore:
 
     def delete(self,id):
       post = self.get_by_id(id)
-      return MemberStore.members.remove(member)
+      MemberStore.members.remove(member)
 
     def entity_exists(self,member):
-        if self.get_by_id(member_id):
+        if self.get_by_id(member.id):
             return True
+        return  False
 
 
 
 class PostStore:
 
     posts = []
-    last_id = 0
+    last_id = 1
 
     def get_all(self):
-        all_posts = self.posts
-        for post in all_posts:
-            return  post
+        return PostStore.posts
 
     def add(self,post):
-        post_id = PostStore.last_id
+        post.id = PostStore.last_id
         PostStore.posts.append(post)
         PostStore.last_id += 1
 
     def get_by_id(self,id):
         all_posts = self.get_all()
         for post in all_posts:
-            if post == id:
+            if post.id == id:
                 return  post
 
     def update(self,post):
@@ -58,8 +57,9 @@ class PostStore:
 
     def delete(self,id):
         post = self.get_by_id(id)
-        return MemberStore.posts.remove(post)
+        PostStore.posts.remove(post)
 
     def entity_exists(self,post):
-        if self.get_by_id(post_id):
+        if self.get_by_id(post.id):
             return True
+        return  False
