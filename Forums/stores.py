@@ -15,11 +15,11 @@ class MemberStore:
         all_members = self.get_all()
         for member in all_members:
             if member.id == id:
-                return  member
+                return member
 
     def update(self,member):
         member = self.get_by_id(id)
-        return  member
+        return member
 
     def delete(self,id):
       member = self.get_by_id(id)
@@ -28,13 +28,13 @@ class MemberStore:
     def entity_exists(self,member):
         if self.get_by_id(member.id):
             return True
-        return  False
+        return False
 
     def get_by_name(self, member_name):
         all_members = self.get_all()
         for member in all_members:
             if member.name == member_name:
-                return  member
+                yield member
 
 
 
@@ -55,11 +55,11 @@ class PostStore:
         all_posts = self.get_all()
         for post in all_posts:
             if post.id == id:
-                return  post
+                return post
 
     def update(self,post):
         post = self.get_by_id(id)
-        return  post
+        return post
 
     def delete(self,id):
         post = self.get_by_id(id)
@@ -68,11 +68,11 @@ class PostStore:
     def entity_exists(self,post):
         if self.get_by_id(post.id):
             return True
-        return  False
+        return False
 
 
     def get_by_name(self, post_name):
         all_posts = self.get_all()
         for post in all_posts:
             if post.name == post_name:
-                return  post
+                yield post
