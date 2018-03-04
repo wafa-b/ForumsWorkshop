@@ -1,3 +1,4 @@
+import  itertools
 class MemberStore:
 
     members = []
@@ -18,8 +19,15 @@ class MemberStore:
                 return member
 
     def update(self,member):
-        member = self.get_by_id(id)
-        return member
+        result = member
+        all_members = self.get_all()
+
+        for index, current_member in enumerate(all_members):
+            if current_member.id == member.id:
+                all_members[index] = member
+                break
+
+        return result
 
     def delete(self,id):
       member = self.get_by_id(id)
@@ -36,6 +44,18 @@ class MemberStore:
             if member.name == member_name:
                 yield member
 
+    def get_members_with_posts(self, all_posts):
+        all_members = self.get_all()
+        for member, post in itertools.product(all_members, all_posts):
+            if member.id is post.member_id:
+                member.posts.append(post)
+        for member in all_members:
+            yield member
+
+    def get_top_two(self, post_store):
+        all_members = self.get_members_with_posts(post_store)
+        all_members = sorted(all_members, key=lambda x: len(x.posts), reverse=True)
+        return all_members[:2]
 
 
 class PostStore:
@@ -58,8 +78,15 @@ class PostStore:
                 return post
 
     def update(self,post):
-        post = self.get_by_id(id)
-        return post
+        result = post
+        all_posts = self.get_all()
+
+        for index, current_member in enumerate(all_posts):
+            if current_member.id == post.id:
+                all_posts[index] = post
+                break
+
+        return result
 
     def delete(self,id):
         post = self.get_by_id(id)
