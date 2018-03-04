@@ -123,6 +123,13 @@ def store_should_get_top_two(member_store, post_store):
             print("\t{post}")
 
 
+def store_should_get_posts_by_date(post_store):
+    posts_stored_by_date = post_store.get_posts_by_date()
+    for post in posts_stored_by_date:
+        print(post)
+
+        print("=" * 10)
+
 
 members_instances = create_members()
 member1, member2, member3 = members_instances
@@ -157,3 +164,5 @@ store_should_add_posts(posts_instances, post_store)
 store_should_get_members_with_posts(member_store, post_store)
 
 store_should_get_top_two(member_store, post_store)
+
+store_should_get_posts_by_date(post_store)
