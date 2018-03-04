@@ -1,3 +1,4 @@
+import datetime
 class Member:
     def __init__(self,name,age):
         self.name = name
@@ -15,7 +16,7 @@ class Post:
         self.contente = contente
         self.id = 0
         self.member_id = member_id
-
+        self.date = datetime.datetime.now()
 
     def __str__(self):
-        return "Title: " +self.title + "\n"+ "Contente: "+ self.contente
+        return "Title: " +self.title + "\n"+ "Contente: "+ self.contente + "\n" + str(self.date)
