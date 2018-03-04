@@ -76,7 +76,8 @@ def catch_exception_when_deleting():
 
 
 
-def create_posts():
+def create_posts(members_instances):
+
     post1 = models.Post("Agriculture", "Agriculture is amazing", members_instances[0].id)
     post2 = models.Post("Engineering", "I love engineering", members_instances[0].id)
 
@@ -88,12 +89,13 @@ def create_posts():
     post7 = models.Post("ComputerSci", "Our passion", members_instances[2].id)
     post8 = models.Post("Algorithms", "Yeah, more of that", members_instances[2].id)
     post9 = models.Post("Operating Systems", "Ewww", members_instances[2].id)
-    print post1
-    print post2
-    print post3
+
+    print(post1)
+    print(post2)
+    print(post3)
     print("=" * 30)
 
-    return post1, post2, post3,post4,post4,post5,post6,post7,post8,post9
+    return post1, post2, post3, post4, post5, post6, post7, post8, post9
 
 
 def store_should_add_posts(posts_instances, post_store):
@@ -140,3 +142,18 @@ update_should_modify_object(member_store, member3)
 catch_exception_when_deleting()
 
 print_all_members(member_store)
+
+store_should_get_members_by_name(member_store)
+
+
+
+posts_instances = create_posts(members_instances)
+post1, post2, post3, post4, post5, post6, post7, post8, post9 = posts_instances
+
+post_store = stores.PostStore()
+
+store_should_add_posts(posts_instances, post_store)
+
+store_should_get_members_with_posts(member_store, post_store)
+
+store_should_get_top_two(member_store, post_store)
