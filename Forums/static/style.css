@@ -19,12 +19,14 @@
 
       .row.content {height:auto;}
     }
-  table, td, th {
-    text-align:center;
+ table, thead,th{
+    text-align:left;
+    font-size: 16px;
 }
-th, td {
+tbody,td {
     padding: 15px;
-    font-size: 16px
+    font-size: 16px;
+    text-align: left;
 }
  table {
     border-collapse: collapse;
